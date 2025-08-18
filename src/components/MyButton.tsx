@@ -2,7 +2,7 @@ import type React from "react";
 
 interface MyButtonProps {
   text: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const MyButton: React.FC<MyButtonProps> = (props) => {
