@@ -1,29 +1,29 @@
 import type React from "react";
 import { useState } from "react";
 
-interface MyButtonProps {
-  text: string;
-  onClick?: () => void;
-}
+const MyButton: React.FC = () => {
+  const [value, setValue] = useState<string | undefined>();
 
-interface Book {
-  name: string;
-  price: number;
-}
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  };
 
-const MyButton: React.FC<MyButtonProps> = (props) => {
-  const [value, setValue] = useState<Book>({
-    name: "One",
-    price: 10,
-  });
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(e);
+  };
+
   return (
     <>
-      <h3>
-        Name: {value.name} (Rs. {value.price})
-      </h3>
-      <button onClick={() => setValue({ name: "Two", price: 20 })}>
-        {props.text}
-      </button>
+      <h1>{value}</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          onChange={handleNameChange}
+          placeholder="Enter Your Name"
+        />
+        <button type="submit">Submit</button>
+      </form>
     </>
   );
 };
