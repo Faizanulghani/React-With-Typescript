@@ -1,12 +1,11 @@
 import MyButton from "./components/MyButton";
-
+import { CounterProvider } from "./provider/Counter";
 function App() {
-
   return (
     <>
-      <MyButton
-        text="MyButton"
-      />
+      <CounterProvider>
+        <MyButton />
+      </CounterProvider>
     </>
   );
 }
